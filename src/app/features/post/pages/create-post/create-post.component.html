@@ -1,0 +1,32 @@
+<div class="max-w-7xl mx-auto px-4">
+    <form [formGroup]="createPostForm" (ngSubmit)="onFormSubmit()">
+        <h1 class="text-3xl mt-8 mb-4 font-extrabold">Create Post</h1>
+        <div class="mt-4">
+            <label for="title" class="w-full">Title</label>
+            <input type="text" class="bg-neutral-100 w-full px-4 py-2 mt-2" placeholder="Enter Title" autocomplete="off" formControlName="title">
+            @if (title.invalid && (title.dirty || title.touched)){
+                @if (title.hasError('required')){
+                    <p class="text-red-700 text-sm mt-1">Title is required</p>
+                }
+                @if (title.hasError('minlength')){
+                    <p class="text-red-700 text-sm mt-1">Title must be atleast 6 characters</p>
+                }
+            }
+        </div>
+        <div class="mt-4">
+            <label for="content" class="w-full">Content</label>
+            <textarea class="bg-neutral-100 w-full px-4 py-2 mt-2 h-[200px]" placeholder="Enter Content" formControlName="content"></textarea>
+            @if (content.invalid && (content.dirty || content.touched)){
+                @if (content.hasError('required')){
+                    <p class="text-red-700 text-sm mt-1">Content is required</p>
+                }
+                @if (content.hasError('maxlength')){
+                    <p class="text-red-700 text-sm mt-1">Content must be less then 3000 characters</p>
+                }
+            }
+        </div>
+        <div class="mt-4">
+            <button type="submit" class="px-4 py-2 rounded bg-indigo-500 text-white disabled:opacity-50 disabled:cursor-not-allowed" [disabled]="createPostForm.valid === false">Publish</button>
+        </div>
+    </form>
+</div>
