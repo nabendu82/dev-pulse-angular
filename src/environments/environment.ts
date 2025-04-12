@@ -1,3 +1,4 @@
 export const environment = {
-    prod: true
+    prod: true,
+    firebase: {}
 };

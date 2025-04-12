@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { addDoc, collection, Firestore } from '@angular/fire/firestore';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +10,8 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   styleUrl: './create-post.component.css'
 })
 export class CreatePostComponent {
+  firestore = inject(Firestore);
+
   createPostForm = new FormGroup({
     title: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.minLength(6)] }),
     content: new FormControl<string>('', { nonNullable: true, validators: [Validators.required, Validators.maxLength(3000)] }),
@@ -23,6 +26,16 @@ export class CreatePostComponent {
   }
 
   onFormSubmit() {
+    if (this.createPostForm.invalid) {
+      return;
+    }
+    //addDoc
+    const postCollectionRef = collection(this.firestore, 'blog-posts')
+    addDoc(postCollectionRef, {
+      title: this.createPostForm.value.title,
+      content: this.createPostForm.value.content,
+      publishedOn: new Date()
+    })
     console.log(this.createPostForm.value)
   }
 }
