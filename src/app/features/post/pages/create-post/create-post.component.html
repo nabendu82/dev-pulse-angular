@@ -6,12 +6,12 @@
             <input type="text" class="bg-neutral-100 w-full px-4 py-2 mt-2" placeholder="Enter Title" autocomplete="off"
                 formControlName="title">
             @if (title.invalid && (title.dirty || title.touched)){
-            @if (title.hasError('required')){
-            <p class="text-red-700 text-sm mt-1">Title is required</p>
-            }
-            @if (title.hasError('minlength')){
-            <p class="text-red-700 text-sm mt-1">Title must be atleast 6 characters</p>
-            }
+                @if (title.hasError('required')){
+                <p class="text-red-700 text-sm mt-1">Title is required</p>
+                }
+                @if (title.hasError('minlength')){
+                <p class="text-red-700 text-sm mt-1">Title must be atleast 6 characters</p>
+                }
             }
         </div>
         <div class="mt-4">
