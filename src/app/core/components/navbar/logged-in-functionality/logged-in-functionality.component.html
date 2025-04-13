@@ -1,0 +1,40 @@
+<div class="ms-4 flex items-center">
+    <div class="ms-auto flex items-center">
+        <a [routerLink]="['/create-post']" class="bg-indigo-500 text-white px-4 py-2 rounded">Create Post</a>
+    </div>
+    <div class="ms-2 relative">
+        <a (click)="navbarService.toggleNavbarMenu()" class="bg-neutral-100 rounded-full p-3 border cursor-pointer block">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+        </a>
+        <ul class="min-w-[200px] absolute right-0 top-14 bg-neutral-50 border rounded" [class]="navbarService.hideUserMenu() ? 'hidden': ''">
+            <li class="px-4 py-2 hover:bg-neutral-200">
+                <a (click)="navbarService.toggleNavbarMenu()" [routerLink]="['/dashboard']" class="flex">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3.75 12h16.5m-16.5 3.75h16.5M3.75 19.5h16.5M5.625 4.5h12.75a1.875 1.875 0 0 1 0 3.75H5.625a1.875 1.875 0 0 1 0-3.75Z" />
+                        </svg>
+                    </span>
+                    <span class="ms-2">Dashboard</span>
+                </a>
+            </li>
+            <li class="px-4 py-2 hover:bg-neutral-200">
+                <a (click)="navbarService.toggleNavbarMenu()" [routerLink]="['/logout']" class="flex">
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M8.25 9V5.25A2.25 2.25 0 0 1 10.5 3h6a2.25 2.25 0 0 1 2.25 2.25v13.5A2.25 2.25 0 0 1 16.5 21h-6a2.25 2.25 0 0 1-2.25-2.25V15m-3 0-3-3m0 0 3-3m-3 3H15" />
+                        </svg>
+                    </span>
+                    <span class="ms-2">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
