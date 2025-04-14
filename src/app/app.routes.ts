@@ -3,6 +3,8 @@ import { CreatePostComponent } from './features/post/pages/create-post/create-po
 import { DashboardComponent } from './features/dashboard/pages/dashboard/dashboard.component';
 import { EditPostComponent } from './features/post/pages/edit-post/edit-post.component';
 import { RegisterComponent } from './features/user/pages/register/register.component';
+import { LoginComponent } from './features/user/pages/login/login.component';
+import { LogoutComponent } from './features/user/pages/logout/logout.component';
 
 export const routes: Routes = [
     {
@@ -20,5 +22,13 @@ export const routes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent
     },
 ];
