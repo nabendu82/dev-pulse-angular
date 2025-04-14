@@ -1,0 +1,23 @@
+@if (isLoading()) {
+    <p>Loading...</p>
+} @else { 
+    @if (blogPostData();as blogPost) {
+    <div class="max-w-7xl mx-auto px-4">
+        <h1 class="text-3xl mt-8 font-extrabold">{{ blogPost.title }}</h1>
+        <p>
+            <span>Published:
+                {{
+                convertTimestampToDate(blogPost.publishedOn) | date : "dd-MM-yyyy"
+                }}</span>
+        </p>
+        <div class="mt-4">
+            <markdown [data]="blogPost.content"></markdown>
+        </div>
+    </div>
+} @else {
+    <div class="flex bg-slate-50 w-full h-svh justify-center items-center flex-col">
+        <h1 class="text-6xl font-semibold text-indigo-600">Blog not found</h1>
+        <p class="mt-4">Sorry, we were unable to find a blog at this location</p>
+    </div>
+    } 
+}
